@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class ConversorTemperaturas {
     public static void main(String[] args) {
         // Lista de divisas y sus codigos
-        String[] temperaturas = {"Celsius", "Fahrenheit", "Kelvin", "Rankine"};
+        String[] temperaturas = {"Celsius", "Fahrenheit", "Kelvin"};
         String[] codigoTemperaturas = {"C", "F", "K", "R"};
 
         // Obtener la temperatura de origen y los grados a convertir
