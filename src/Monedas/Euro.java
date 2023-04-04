@@ -1,5 +1,7 @@
 package Monedas;
 
+import javax.swing.*;
+
 public class Euro implements Moneda{
     double cambioPesoCol = 5042.39;
     double cambioDolar = 1.08;
@@ -26,7 +28,7 @@ public class Euro implements Moneda{
                 conversion = cantidad * cambioWonSurCoreano;
                 break;
             default:
-                System.out.println("Internal Error: Conversion invalida");
+                JOptionPane.showMessageDialog(null, "Conversion invalida", "Conversor de divisas", JOptionPane.INFORMATION_MESSAGE);
                 break;
         }
         return conversion;

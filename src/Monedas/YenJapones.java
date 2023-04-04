@@ -1,5 +1,7 @@
 package Monedas;
 
+import javax.swing.*;
+
 public class YenJapones implements Moneda{
     double cambioPesoCol = 34.94;
     double cambioDolar = 0.0075;
@@ -26,7 +28,7 @@ public class YenJapones implements Moneda{
                 conversion = cantidad * cambioWonSurCoreano;
                 break;
             default:
-                System.out.println("Internal Error: Conversion invalida");
+                JOptionPane.showMessageDialog(null, "Conversion invalida", "Conversor de divisas", JOptionPane.INFORMATION_MESSAGE);
                 break;
         }
         return conversion;

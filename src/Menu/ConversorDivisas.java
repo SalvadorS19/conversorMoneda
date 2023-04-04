@@ -12,20 +12,29 @@ public class ConversorDivisas {
         String[] codigoDivisas = {"COP", "USD", "EUR", "GBP", "JPY", "KRW"};
 
         // Obtener la divisa de origen y la cantidad a convertir
-        int divisaOrigen = Arrays.asList(divisas).indexOf(JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de divisas", JOptionPane.PLAIN_MESSAGE, null, divisas, divisas[0]));
+        int divisaOrigen = Arrays.asList(divisas).indexOf(JOptionPane.showInputDialog(null, "Seleccione la divisa inicial:", "Conversor de divisas", JOptionPane.PLAIN_MESSAGE, null, divisas, divisas[0]));
         String cantidadOrigenStr = JOptionPane.showInputDialog(null, "Ingrese la cantidad a convertir:", "Conversor de divisas", JOptionPane.PLAIN_MESSAGE);
 
-        if(!cantidadOrigenStr.matches("[+-]?\\d*(\\.\\d+)?")){
-            JOptionPane.showMessageDialog(null, "Debe ingresar un valor valido", "Conversor de divisas", JOptionPane.INFORMATION_MESSAGE);
+        if(!cantidadOrigenStr.matches("[+-]?\\d*(\\.\\d+)?") ){
+            JOptionPane.showMessageDialog(null, "El valor ingresado no es un número", "Conversor de divisas", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-
-        // Obtener la divisa de destino
-        int divisaDestino = Arrays.asList(divisas).indexOf(JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de divisas", JOptionPane.PLAIN_MESSAGE, null, divisas, divisas[0]));
 
         double cantidadOrigen = Double.parseDouble(cantidadOrigenStr);
         double cantidadDestino = 0;
 
+        if(cantidadOrigen <= 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar una cantidad valida", "Conversor de divisas", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        // Obtener la divisa de destino
+        int divisaDestino = Arrays.asList(divisas).indexOf(JOptionPane.showInputDialog(null, "Seleccione la divisa destino:", "Conversor de divisas", JOptionPane.PLAIN_MESSAGE, null, divisas, divisas[0]));
+
+        if(divisaOrigen == divisaDestino){
+            JOptionPane.showMessageDialog(null, "Conversion invalida", "Conversor de divisas", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         switch (codigoDivisas[divisaOrigen]){
             case "COP":
                 cantidadDestino = new PesoCol().convertirA(codigoDivisas[divisaDestino], cantidadOrigen);

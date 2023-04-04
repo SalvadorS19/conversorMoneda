@@ -1,5 +1,7 @@
 package Monedas;
 
+import javax.swing.*;
+
 public class LibraEsterlina implements Moneda{
     double cambioPesoCol = 5730.29;
     double cambioDolar = 1.23;
@@ -26,7 +28,7 @@ public class LibraEsterlina implements Moneda{
                 conversion = cantidad * cambioWonSurCoreano;
                 break;
             default:
-                System.out.println("Internal Error: Conversion invalida");
+                JOptionPane.showMessageDialog(null, "Conversion invalida", "Conversor de divisas", JOptionPane.INFORMATION_MESSAGE);
                 break;
         }
         return conversion;
